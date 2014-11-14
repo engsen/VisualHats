@@ -1,0 +1,186 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    opacity: 1;
+}
+
+.axis text { font-size:10px; }
+
+body { font: 12px sans-serif; }
+.circles { opacity: .5; }
+
+.tipsy { font-size:11px; margin-top:-10px;}
+
+.guide line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    opacity: 0;
+}
+
+path {
+	stroke: #fff;
+	fill-rule: evenodd;
+}
+body {
+	font-family: "Arial";
+	width: 1024px;
+	max-height: 2000px;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+footer {
+	padding: 2em 0 1em 0;
+	font-size: 12px;
+}
+h1 {
+	font-size: 96px;
+	margin-top: .3em;
+	margin-bottom: 0;
+}
+h1 + h2 {
+	margin-top: 0;
+}
+h2 {
+	font-weight: 400;
+	font-size: 28px;
+}
+h1, h2 {
+a font-family: "Yanone Kaffeesatz";
+	text-rendering: optimizeLegibility;
+}
+#body > p {
+	line-height: 1.5em;
+	width: 640px;
+	text-rendering: optimizeLegibility;
+}
+#charts {
+	padding: 10px 0;
+}
+.chart {
+	display: inline-block;
+	height: 151px;
+	margin-bottom: 20px;
+}
+.reset {
+	padding-left: 1em;
+	font-size: smaller;
+	color: #ccc;
+}
+.background.bar {
+	fill: #ccc;
+}
+.foreground.bar {
+	fill: steelblue;
+}
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+.axis text {
+	font: 10px sans-serif;
+}
+.brush rect.extent {
+	fill: steelblue;
+	fill-opacity: .125;
+}
+.brush .resize path {
+	fill: #eee;
+	stroke: #666;
+}
+#hour-chart {
+	width: 260px;
+}
+#delay-chart {
+	width: 230px;
+}
+#distance-chart {
+	width: 420px;
+}
+#date-chart {
+	width: 920px;
+}
+#flight-list {
+	min-height: 1024px;
+}
+#flight-list .date, #flight-list .day {
+	margin-bottom: .4em;
+}
+#flight-list .flight {
+	line-height: 1.5em;
+	background: #eee;
+	width: 640px;
+	margin-bottom: 1px;
+}
+#flight-list .time {
+	color: #999;
+}
+#flight-list .flight div {
+	display: inline-block;
+	width: 100px;
+}
+#flight-list div.distance, #flight-list div.delay {
+	width: 160px;
+	padding-right: 10px;
+	text-align: right;
+}
+#flight-list .early {
+	color: green;
+}
+aside {
+	position: absolute;
+	left: 740px;
+	font-size: smaller;
+	width: 220px;
+}
+#sunburst {
+	width: 500px;
+	float: left;
+}
+#scattered {
+	width: 500px;
+	float: right;
+	margin-top: 50px;
+}
+.clear {
+	clear: both;
+	height: 0px;
+}
+
+.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; }
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; white-space:pre-wrap;}
+.tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+
+.tipsy-arrow { position: absolute; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px; }
+
+#info {
+	height: 30px;
+	text-align: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: large;
+	color: #666;
+	vertical-align: bottom;
+}
+
+.tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
+.tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
+.tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
+.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -4px; background-position: bottom left; }
+.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; background-position: bottom left; }
+.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; background-position: bottom left; }
+.tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
+.tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }#navi {
+	float: right;
+	padding-top: 25px;
+}
+#headings {
+	float: left;
+	font-size: 60px;
+	color: #999;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+}
