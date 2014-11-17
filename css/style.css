@@ -1,89 +1,149 @@
-body {
-  background: url(texture-noise.png);
-  overflow: hidden;
-  margin: 0;
-  font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica;
+
+div.frontpage{
+    height: 600px;
+    background-image: url("../image/maintitlebackground.JPG");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#chart, #header, #footer {
-  position: absolute;
-  top: 0;
+
+#chart {
+    width: 400px;
+    height: 620px;
+    margin: 1px auto;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ddd;
+    background-image: url("../image/lazy.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#header, #footer {
-  z-index: 1;
-  display: block;
-  font-size: 36px;
-  font-weight: 300;
-  text-shadow: 0 1px 0 #fff;
+#bar2 {
+    width: 960px;
+    height: 320px;
+    background: #fff;
+    margin: 1px auto;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ddd;
+    background-image: url("../image/lazy.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#header.inverted, #footer.inverted {
-  color: #fff;
-  text-shadow: 0 1px 4px #000;
+#worldmap {
+    width: 960px;
+    height: 620px;
+    margin: 1px auto;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ddd;
+    background-image: url("../image/lazy.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#header {
-  top: 80px;
-  left: 140px;
-  width: 1000px;
+.graph-background-white {
+    background-color: #fff;
 }
 
-#footer {
-  top: 680px;
-  right: 140px;
-  text-align: right;
+text {
+    pointer-events: none;
+}
+
+.grandparent text { /* header text */
+    font-weight: bold;
+    font-size: medium;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 rect {
-  fill: none;
-  pointer-events: all;
+    fill: none;
+    stroke: #fff;
 }
 
-pre {
-  font-size: 18px;
+rect.parent,
+.grandparent rect {
+    stroke-width: 2px;
 }
 
-line {
-  stroke: #000;
-  stroke-width: 1.5px;
+.grandparent rect {
+    fill: #fff;
 }
 
-.string, .regexp {
-  color: #f39;
+.children rect.parent,
+.grandparent rect {
+    cursor: pointer;
 }
 
-.keyword {
-  color: #00c;
+rect.parent {
+    pointer-events: all; 
 }
 
-.comment {
-  color: #777;
-  font-style: oblique;
+.children:hover rect.child,
+.grandparent:hover rect {
+    fill: #aaa;
 }
 
-.number {
-  color: #369;
+.textdiv { /* text in the boxes */
+    font-size: small;
+    padding: 5px;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; 
 }
 
-.class, .special {
-  color: #1181B8;
+.bar {
+    fill: steelblue;
 }
 
-a:link, a:visited {
-  color: #000;
-  text-decoration: none;
+.bar:hover {
+    fill: brown;
 }
 
-a:hover {
-  color: #666;
+.axis {
+    font: 10px sans-serif;
 }
 
-.hint {
-  position: absolute;
-  right: 0;
-  width: 1280px;
-  font-size: 12px;
-  color: #999;
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+}
+
+.y.axis path {
+    display: none;
+}
+
+.brush .extent {
+    stroke: #000;
+    fill: blue;
+    fill-opacity: .15;
+    shape-rendering: crispEdges;
+}
+
+path {
+    stroke: white;
+    stroke-width: 0.25px;
+    fill: grey;
+}
+
+circle{
+    opacity: 0.15 !important;
+}
+
+circle:hover{
+    fill: orange !important;
+    opacity: 0.7 !important;
 }
