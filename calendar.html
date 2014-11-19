@@ -38,9 +38,9 @@
     <h2><center>Visualise the number of terrorist attacks per day</center></h2>
     <div id="body">
       <div id="test" align="center">
-        <b><span>…</span>, 2000-2013 (use the menu to change the dataset)</b>
+        <b><span id="calendartitle">…</span>, 2000-2013 (use the menu to change the dataset)</b>
         <br>
-        <div><select>
+        <div><select id="dataselection">
           <option value="all">All Terrorist Attacks</option>
           <option value="asia">Terrorist Attacks in Asia</option>
           <option value="middleEast">Terrorist Attacks in Middle East and Africa</option>
@@ -62,7 +62,10 @@ var day = d3.time.format("%w"),
     percent = d3.format(".1%"),
     allData,
     asiaData,
-    northAmData,
+    nmData,
+    smData,
+    europeData,
+    midEastData
     formatDate = d3.time.format("%Y-%m-%d"),
     formatNumber = d3.format(",d"),
     formatPercent = d3.format("+.1%");
@@ -103,19 +106,17 @@ svg.selectAll("path.month")
     .attr("class", "month")
     .attr("d", monthPath);
 
-d3.csv("data/datesAsia.csv", function(csv) {
+
+d3.csv("data/calendarData.csv", function(csv) {
   asiaData = d3.nest()
       .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
       .key(function(d) { return d.date; })
-      .rollup(function(d) { return +d[0].value; })
+      .rollup(function(d) { return +d[0].valueAsia; })
       .map(csv);
 
-  d3.select("select").on("change", function() {
-    display(this.value === "all" ? allData : asiaData);
-  });
 });
 
-d3.csv("data/dates.csv", function(csv) {
+d3.csv("data/calendarData.csv", function(csv) {
   allData = d3.nest()
       .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
       .key(function(d) { return d.date; })
@@ -123,31 +124,107 @@ d3.csv("data/dates.csv", function(csv) {
       .map(csv);
 
   display(allData);
+  
+});
+
+d3.csv("data/calendarData.csv", function(csv) {
+  nmData = d3.nest()
+      .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
+      .key(function(d) { return d.date; })
+      .rollup(function(d) { return +d[0].valueNorthAm; })
+      .map(csv);
+});
+
+d3.csv("data/calendarData.csv", function(csv) {
+  smData = d3.nest()
+      .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
+      .key(function(d) { return d.date; })
+      .rollup(function(d) { return +d[0].valueSouthAm; })
+      .map(csv);
+});
+
+d3.csv("data/calendarData.csv", function(csv) {
+  midEastData = d3.nest()
+      .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
+      .key(function(d) { return d.date; })
+      .rollup(function(d) { return +d[0].valueMidEast; })
+      .map(csv);
+});
+
+d3.csv("data/calendarData.csv", function(csv) {
+  europeData = d3.nest()
+      .key(function(d) { return (d.date = formatDate.parse(d.date)).getFullYear(); })
+      .key(function(d) { return d.date; })
+      .rollup(function(d) { return +d[0].valueEurope; })
+      .map(csv);
+});
+
+
+d3.select("select").on("change", function() {
+    if (this.value==="all"){
+      display(allData);
+    } else if (this.value==="asia"){
+      display(asiaData);
+    } else if (this.value === "northAmerica"){
+      display(nmData);
+    } else if (this.value === "europe"){
+      display(europeData);
+    } else if (this.value === "middleEast"){
+      display(midEastData);
+    } else if (this.value === "southAmerica"){
+      display(smData);
+    }
+    //display(this.value === "all" ? allData : asiaData);
 });
 
 function display(data, title) {
+
+  var x = 0;
+  var y = 0;
 
   if (data === allData) {
     var formatValue = formatNumber,
         title = "Terrorist Attacks Globally",
         color = d3.scale.quantile();
-
+        y = 50;
   } else if (data === asiaData){
     var formatValue = formatNumber,
         title = "Terrorist Attacks in Asia",
         color = d3.scale.quantile();
-  } else if (data === northAmData){
+        x = 0;
+        y = 15;
+  } else if (data === nmData){
     var formatValue = formatNumber,
         title = "Terrorist Attacks in North America",
-        color = d3.scale.quantile();
+        color = d3.scale.quantize();
+        x = 0;
+        y = 5;
+  } else if (data === smData){
+    var formatValue = formatNumber,
+        title = "Terrorist Attacks in South America",
+        color = d3.scale.quantize();
+        x = 0;
+        y = 5;
+  } else if (data === midEastData){
+    var formatValue = formatNumber,
+        title = "Terrorist Attacks in Middle East and Afria",
+        color = d3.scale.quantize();
+        x = 0;
+        y = 20;
+  } else if (data === europeData){
+    var formatValue = formatNumber,
+        title = "Terrorist Attacks in Europe",
+        color = d3.scale.quantize();
+        x = 0;
+        y = 5;
   } 
 
-  d3.select("#test span")
+  d3.select("#calendartitle")
       .text(title);
 
   svg.each(function(year) {
     color
-        .domain(data === allData ? d3.values(data[year]) : [0,50])
+        .domain(data === allData ? d3.values(data[year]) : [x,y])
         .range(d3.range(9));
 
     d3.select(this).selectAll("rect.day")

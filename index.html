@@ -1,44 +1,94 @@
 <!DOCTYPE html>
-<html>
- <head>   
-<meta charset="utf-8">
-<title>VisualHats versus the Terrorists</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script src="js/d3.v3.min.js"></script>
-<script>_d3v3 = d3;</script>
-<script src="js/d3.v2.js"></script>
-<script>_d3v2 = d3;</script>
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/crossfilter.v1.min.js"></script>
-<script src="http://d3js.org/topojson.v0.min.js"></script>
-</head>
-<body>
-<div class="frontpage">
-    
-</div>
-    
-<div id="activeFilters" style="text-align:center"></div>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<table align="center"><tr>
-        <td><div id="chart"><div id="v-title">Kill and Casualty Count</div></div></td>
-        <td><div id="worldmap"><div id="v-title">Terrorist Attacks Geolocation</div></div></td>
-</tr></table>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="./css/jquery.fullPage.css" />
+        <link rel="stylesheet" type="text/css" href="./css/examples.css" />
 
 
-<table align="center"><tr>
-        <td><div id="bar2"><div id="v-title">Terrorism Incident Count<div id="incidentcount"/></div></div></td>
-        <td><div id="incidentText" style="width:400px;"></div></td>
-</tr></table>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/d3.v3.min.js"></script>
+        <script>_d3v3 = d3;</script>
+        <script src="js/d3.v2.js"></script>
+        <script>_d3v2 = d3;</script>
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/crossfilter.v1.min.js"></script>
+        <script src="http://d3js.org/topojson.v0.min.js"></script>
+
+        <script src="js/worldmap.js"></script>
+
+        <script src="js/bootstrap.js"></script>
+
+        <script src="js/bar2.js"></script>
+
+        <script src="js/treemap.js"></script>
+        <script src="js/treemap2.js"></script>
+        <!--[if IE]>
+                <script type="text/javascript">
+                         var console = { log: function() {} };
+                </script>
+        <![endif]-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="./js/jquery.fullPage.js"></script>
+        <script type="text/javascript" src="./js/examples.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#fullpage').fullpage({
+                    anchors: ['firstPage'],
+                    menu: '#menu',
+                    scrollingSpeed: 1700
+                });
+
+            });
+        </script>
+        <style type="text/css">
+            #v-title{color:black !important;}
+            #b-title{color:black !important;}
+            #incidentText{color:black !important;}
+        </style>
 
 
-<script src="js/worldmap.js"></script>
+    </head>
+    <body>
 
-<script src="js/bootstrap.js"></script>
+        <div id="fullpage">
 
-<script src="js/bar2.js"></script>
+            <div class="section" id="section0">
+                <div class="slide">
+                    <div class="intro">
 
-<script src="js/treemap.js"></script>
-<script src="js/treemap2.js"></script>
-</body>
 
+                        <table align="center"><tr>
+                                <td><div id="chart"><div id="v-title">Kill and Casualty Count</div></div></td>
+                                <td><table>
+                                        <tr><td><div id="bar2"><div id="b-title"></div></td></tr>
+                                        <tr><td><div id="incidentText" style="width:1120px; height:150px;"></div></td></tr>
+                                    </table>
+                                </td> 
+                            </tr></table>
+
+
+                        <table align="center"><tr>
+                                <div id="worldmap"><div id="v-title">Terrorist Attacks Geolocation</div></div></td>
+                            </tr></table>
+
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="intro">
+                        <iframe src="calendar.html" style="width: 100%; height: 900px"></iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
 </html>

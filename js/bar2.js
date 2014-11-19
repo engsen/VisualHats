@@ -34,8 +34,8 @@ function drawBar(filterAttackType) {
             bottom: 40, 
             left: 40
         },
-        w = 960 - margin.left - margin.right,
-        h = 300 - margin.top - margin.bottom;
+        w = 1120 - margin.left - margin.right,
+        h = 250 - margin.top - margin.bottom;
 
         var startYear = 1970;
         var endYear = 2014;
@@ -72,10 +72,11 @@ function drawBar(filterAttackType) {
                 return records.iyear>=_startYear && records.iyear<=_endYear;
             }).value()
             
-            document.getElementById("incidentcount").innerHTML = "Total incidents from year " + "<strong>"+ _startYear+"</strong>" + " to " + "<strong>"+ _endYear +"</strong>" + " is " +"<strong>"+ totalincident+"</strong>";
+            _tipIncidentCount = "Total incidents from year " + "<strong>"+ _startYear+"</strong>" + " to " + "<strong>"+ _endYear +"</strong>" + " is " +"<strong>"+ totalincident+"</strong>";
             //filter here
             writeFilter();
-            showworldmap();
+           _regionname=null;
+            mapfocus();
             d3.select("#chart").select("svg").remove();
             drawTreeB();
             drawTree(_startYear, _endYear);
